@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '嵌套环形图';
+
+option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'horizontal',
+        x: 'center',
+        y: 'bottom',
+        data:['松岗分库','杭州分库','北京分库','广州分库','苏州分库','上海分库','南京分库','观澜分库','无锡分库','温州分库',
+                '宁波分库',
+                '武清分库','天津分库',
+                '嘉兴分库',
+                '厦门分库',
+                '武汉分库',
+                '金华分库',
+                '台州分库',
+                '浦东分库',
+                '东莞分库',
+                '中山分库',
+                '佛山分库',
+                '重庆分库',
+                '成都分库',
+                '泉州分库',
+                '福州分库',
+                '余姚分库',
+                '通州分库',
+                '石契分库',
+                '锡山分库',
+                '虎门分库',
+                '南通分库']
+    },
+            
+    series: [
+        {
+            name:'区域余油情况',
+            type:'pie',
+            selectedMode: 'single',
+            radius: [0, '30%'],
+
+            label: {
+                normal: {
+                    position: 'inner'
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:22000, name:'华南大区', selected:false},
+                {value:17800, name:'华东大区'},
+                {value:17400, name:'京津冀大区'},
+                {value:14000, name:'华中大区'},
+                {value:10000, name:'西南大区'},
+                {value:12000, name:'华北大区'},
+                {value:11400, name:'其他大区'}
+                
+            ]
+        },
+        {
+            name:'分库余油情况',
+            type:'pie',
+            radius: ['40%', '55%'],
+            label: {
+                emphasis: {
+                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                    backgroundColor: '#eee',
+                    borderColor: '#aaa',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    // shadowBlur:3,
+                    // shadowOffsetX: 2,
+                    // shadowOffsetY: 2,
+                    // shadowColor: '#999',
+                    // padding: [0, 7],
+                    rich: {
+                        a: {
+                            color: '#999',
+                            lineHeight: 22,
+                            align: 'center'
+                        },
+                        // abg: {
+                        //     backgroundColor: '#333',
+                        //     width: '100%',
+                        //     align: 'right',
+                        //     height: 22,
+                        //     borderRadius: [4, 4, 0, 0]
+                        // },
+                        hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        b: {
+                            fontSize: 16,
+                            lineHeight: 33
+                        },
+                        per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
+                        }
+                    }
+                }
+            },
+            data:[
+                {value:2750, name:'松岗分库'},
+                {value:2750, name:'杭州分库'},
+                {value:2750, name:'北京分库'},
+                {value:2750, name:'广州分库'},
+                {value:2750, name:'苏州分库'},
+                {value:2750, name:'上海分库'},
+                {value:2750, name:'南京分库'},
+                {value:2750, name:'台州分库'},
+                {value:3560, name:'观澜分库'},
+                {value:3560, name:'无锡分库'},
+                {value:3560, name:'温州分库'},
+                {value:3560, name:'宁波分库'},
+                {value:3560, name:'武清分库'},
+                {value:3480, name:'天津分库'},
+                {value:3480, name:'嘉兴分库'},
+                {value:3480, name:'厦门分库'},
+                {value:3480, name:'武汉分库'},
+                {value:3480, name:'金华分库'},
+
+                {value:3500, name:'浦东分库'},
+                {value:3500, name:'东莞分库'},
+                {value:3500, name:'中山分库'},
+                {value:3500, name:'佛山分库'},
+                {value:2500, name:'重庆分库'},
+                {value:2500, name:'成都分库'},
+                {value:2500, name:'泉州分库'},
+                {value:2500, name:'福州分库'},
+                {value:4000, name:'余姚分库'},
+                {value:4000, name:'通州分库'},
+                {value:4000, name:'石契分库'},
+                {value:4000, name:'锡山分库'},
+                {value:5700, name:'虎门分库'},
+                {value:5700, name:'南通分库'}
+
+            ]
+        }
+    ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
